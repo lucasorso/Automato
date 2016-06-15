@@ -7,46 +7,46 @@ import javax.swing.table.DefaultTableModel;
 
 public class Automato extends javax.swing.JFrame {
 
-    private String[] lAlfabeto;
+    private String[] alfabeto;
     private int qtdLinhasTabela;
     private int lProximaLinhaAfd;
     private int lQtdLinhasAfnd;
     private int qtdLinhasAFD;
 
-    public Automato() {
+    public Automato() 
+    {
         initComponents();
-        jPanelNovaTabelaDeTransicao.setVisible(false);
+        pnlNovaTabelaDeTransicao.setVisible(false);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelParametros = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        painelParametros = new javax.swing.JPanel();
+        labeEstadoInicial = new javax.swing.JLabel();
         txtInicial = new javax.swing.JTextField();
         txtSentenca = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        labelSentenca = new javax.swing.JLabel();
+        labelEstadosFinais = new javax.swing.JLabel();
         txtFinal = new javax.swing.JTextField();
         jPanelSaida = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        areaTextoResultado = new javax.swing.JTextArea();
-        jPanelTabelaTransicao = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        txtSaida = new javax.swing.JTextArea();
+        pnlTabelaTransicao = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tabela1 = new javax.swing.JTable();
         btnExecutar = new javax.swing.JButton();
-        btnConverter = new javax.swing.JButton();
-        jPanelNovaTabelaDeTransicao = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        btnLimpar = new javax.swing.JButton();
+        pnlNovaTabelaDeTransicao = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
         tabela2 = new javax.swing.JTable();
-        btnTestaSentenca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Linguagens Formais");
 
-        jPanelParametros.setBorder(javax.swing.BorderFactory.createTitledBorder("Parâmetros"));
+        painelParametros.setBorder(javax.swing.BorderFactory.createTitledBorder("Parâmetros"));
 
-        jLabel7.setText("Estado Inicial");
+        labeEstadoInicial.setText("Estado Inicial");
 
         txtInicial.setText("q0");
 
@@ -57,69 +57,65 @@ public class Automato extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Sentença");
+        labelSentenca.setText("Sentença");
 
-        jLabel6.setText("Estados Finais");
+        labelEstadosFinais.setText("Estados Finais");
 
         txtFinal.setText("q3");
 
-        javax.swing.GroupLayout jPanelParametrosLayout = new javax.swing.GroupLayout(jPanelParametros);
-        jPanelParametros.setLayout(jPanelParametrosLayout);
-        jPanelParametrosLayout.setHorizontalGroup(
-            jPanelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelParametrosLayout.createSequentialGroup()
-                .addGroup(jPanelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6))
+        javax.swing.GroupLayout painelParametrosLayout = new javax.swing.GroupLayout(painelParametros);
+        painelParametros.setLayout(painelParametrosLayout);
+        painelParametrosLayout.setHorizontalGroup(
+            painelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelParametrosLayout.createSequentialGroup()
+                .addGroup(painelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labeEstadoInicial)
+                    .addComponent(labelSentenca)
+                    .addComponent(labelEstadosFinais))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSentenca, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-        jPanelParametrosLayout.setVerticalGroup(
-            jPanelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelParametrosLayout.createSequentialGroup()
+        painelParametrosLayout.setVerticalGroup(
+            painelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelParametrosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labeEstadoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEstadosFinais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGroup(painelParametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSentenca)
                     .addComponent(txtSentenca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanelSaida.setBorder(javax.swing.BorderFactory.createTitledBorder("Saída"));
 
-        areaTextoResultado.setEditable(false);
-        areaTextoResultado.setColumns(40);
-        areaTextoResultado.setRows(10);
-        jScrollPane1.setViewportView(areaTextoResultado);
+        txtSaida.setEditable(false);
+        txtSaida.setColumns(40);
+        txtSaida.setRows(10);
+        jScrollPane1.setViewportView(txtSaida);
 
         javax.swing.GroupLayout jPanelSaidaLayout = new javax.swing.GroupLayout(jPanelSaida);
         jPanelSaida.setLayout(jPanelSaidaLayout);
         jPanelSaidaLayout.setHorizontalGroup(
             jPanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSaidaLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanelSaidaLayout.setVerticalGroup(
             jPanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSaidaLayout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
 
-        jPanelTabelaTransicao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de Transição"));
+        pnlTabelaTransicao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de Transição"));
 
         tabela1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,17 +147,17 @@ public class Automato extends javax.swing.JFrame {
                 "Estado", "Transição", "Resultado"
             }
         ));
-        jScrollPane5.setViewportView(tabela1);
+        jScrollPane2.setViewportView(tabela1);
 
-        javax.swing.GroupLayout jPanelTabelaTransicaoLayout = new javax.swing.GroupLayout(jPanelTabelaTransicao);
-        jPanelTabelaTransicao.setLayout(jPanelTabelaTransicaoLayout);
-        jPanelTabelaTransicaoLayout.setHorizontalGroup(
-            jPanelTabelaTransicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlTabelaTransicaoLayout = new javax.swing.GroupLayout(pnlTabelaTransicao);
+        pnlTabelaTransicao.setLayout(pnlTabelaTransicaoLayout);
+        pnlTabelaTransicaoLayout.setHorizontalGroup(
+            pnlTabelaTransicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
         );
-        jPanelTabelaTransicaoLayout.setVerticalGroup(
-            jPanelTabelaTransicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+        pnlTabelaTransicaoLayout.setVerticalGroup(
+            pnlTabelaTransicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
         );
 
         btnExecutar.setText("Executar");
@@ -171,15 +167,14 @@ public class Automato extends javax.swing.JFrame {
             }
         });
 
-        btnConverter.setText("Converter para AFD");
-        btnConverter.setEnabled(false);
-        btnConverter.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConverterActionPerformed(evt);
+                btnLimparActionPerformed(evt);
             }
         });
 
-        jPanelNovaTabelaDeTransicao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de transição Com Novos Estados"));
+        pnlNovaTabelaDeTransicao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de transição Com Novos Estados"));
 
         tabela2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -219,26 +214,18 @@ public class Automato extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(tabela2);
+        jScrollPane3.setViewportView(tabela2);
 
-        javax.swing.GroupLayout jPanelNovaTabelaDeTransicaoLayout = new javax.swing.GroupLayout(jPanelNovaTabelaDeTransicao);
-        jPanelNovaTabelaDeTransicao.setLayout(jPanelNovaTabelaDeTransicaoLayout);
-        jPanelNovaTabelaDeTransicaoLayout.setHorizontalGroup(
-            jPanelNovaTabelaDeTransicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlNovaTabelaDeTransicaoLayout = new javax.swing.GroupLayout(pnlNovaTabelaDeTransicao);
+        pnlNovaTabelaDeTransicao.setLayout(pnlNovaTabelaDeTransicaoLayout);
+        pnlNovaTabelaDeTransicaoLayout.setHorizontalGroup(
+            pnlNovaTabelaDeTransicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
         );
-        jPanelNovaTabelaDeTransicaoLayout.setVerticalGroup(
-            jPanelNovaTabelaDeTransicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        pnlNovaTabelaDeTransicaoLayout.setVerticalGroup(
+            pnlNovaTabelaDeTransicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
-
-        btnTestaSentenca.setText("Testa Sentença");
-        btnTestaSentenca.setEnabled(false);
-        btnTestaSentenca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTestaSentencaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,19 +233,18 @@ public class Automato extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jPanelTabelaTransicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlTabelaTransicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanelParametros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelParametros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnExecutar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTestaSentenca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnConverter))
+                        .addComponent(btnLimpar)
+                        .addGap(113, 113, 113))
                     .addComponent(jPanelSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelNovaTabelaDeTransicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlNovaTabelaDeTransicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -266,18 +252,16 @@ public class Automato extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelNovaTabelaDeTransicao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlNovaTabelaDeTransicao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanelTabelaTransicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlTabelaTransicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanelParametros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(painelParametros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnExecutar)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnTestaSentenca)
-                                        .addComponent(btnConverter)))
+                                    .addComponent(btnLimpar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanelSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -287,199 +271,232 @@ public class Automato extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void constroiEstados(String estado) {
+    private void constroiEstados(String estado)
+    {
         int i, j, k;
         String novoEstado, estadoFinal;
         String estados[];
-        for (j = 0; j < lAlfabeto.length; j++) {
+        for (j = 0; j < alfabeto.length; j++) 
+        {
             novoEstado = "";
             estados = estado.split(",");
-            for (k = 0; k < estados.length; k++) {
-                for (i = 0; i < lQtdLinhasAfnd; i++) {
-                    if (tabela1.getValueAt(i, 0).toString().equals(estados[k])
-                            && tabela1.getValueAt(i, 1).toString().equals(lAlfabeto[j])) {
+            for (k = 0; k < estados.length; k++)
+            {
+                for (i = 0; i < lQtdLinhasAfnd; i++) 
+                {
+                    if (tabela1.getValueAt(i, 0).toString().equals(estados[k]) && tabela1.getValueAt(i, 1).toString().equals(alfabeto[j]))
+                    {
                         if (!contemEstado(novoEstado, tabela1.getValueAt(i, 2).toString())) {
-                            if (novoEstado != "") {
+                            if (novoEstado != "") 
                                 novoEstado += ",";
-                            }
+                            
                             novoEstado += tabela1.getValueAt(i, 2).toString();
                         }
                     }
                 }
             }
-            if (novoEstado == "") {
+            if (novoEstado == "") 
                 continue;
-            }
-            
-            for (i = 0; i <= (lProximaLinhaAfd - 1); i++) {
+
+            for (i = 0; i <= (lProximaLinhaAfd - 1); i++) 
+            {
                 if (tabela2.getValueAt(i, 0).toString().equals(estado)
-                        && tabela2.getValueAt(i, 1).toString().equals(lAlfabeto[j])
+                        && tabela2.getValueAt(i, 1).toString().equals(alfabeto[j])
                         && tabela2.getValueAt(i, 2).toString().equals(novoEstado)) {
                     break;
                 }
             }
-            if (i > (lProximaLinhaAfd - 1)) {
+            if (i > (lProximaLinhaAfd - 1))
+            {
                 tabela2.setValueAt(estado, lProximaLinhaAfd, 0);
-                tabela2.setValueAt(lAlfabeto[j], lProximaLinhaAfd, 1);
+                tabela2.setValueAt(alfabeto[j], lProximaLinhaAfd, 1);
                 tabela2.setValueAt(novoEstado, lProximaLinhaAfd, 2);
-                estadoFinal = estadoFinalAFND(novoEstado);
+                estadoFinal = constroiNovoEstadoFinal(novoEstado);
                 tabela2.setValueAt(estadoFinal, lProximaLinhaAfd, 3);
                 lProximaLinhaAfd++;
-
-                areaTextoResultado.append("---Inclui transi��o no AFD: " + estado + "  |  " + lAlfabeto[j] + "  |  " + novoEstado + "  " + estadoFinal + "\n");
-                areaTextoResultado.append("Constr�i estados a partir do novo estado: " + novoEstado + "\n");
+                txtSaida.append("-Transição de estado -> " + estado + " Transição -> " + alfabeto[j] + " Novo Estado -> " + novoEstado + " | " + estadoFinal + "\n");
                 constroiEstados(novoEstado);
             }
         }
     }
 
-    private boolean contemEstado(String estado1, String estado2) {
+    private boolean contemEstado(String estado1, String estado2) 
+    {
         int i;
         String estados[] = estado1.split(",");
 
-        for (i = 0; i < estados.length; i++) {
-            if (estados[i].equals(estado2)) {
+        for (i = 0; i < estados.length; i++) 
+        {
+            if (estados[i].equals(estado2))
                 break;
-            }
         }
-        if (i < estados.length) {
+        if (i < estados.length) 
             return true;
-        } else {
+        else 
             return false;
-        }
     }
 
-    private String estadoFinalAFND(String s) {
+    private String constroiNovoEstadoFinal(String estado)
+    {
         int i, j;
         String estadosFinais[] = txtFinal.getText().split(",");
-        String estadosAux[] = s.split(",");
-        for (i = 0; i < estadosFinais.length; i++) {
-            for (j = 0; j < estadosAux.length; j++) {
-                if (estadosFinais[i].equals(estadosAux[j])) {
+        String estadosAux[] = estado.split(",");
+        for (i = 0; i < estadosFinais.length; i++) 
+        {
+            for (j = 0; j < estadosAux.length; j++) 
+            {
+                if (estadosFinais[i].equals(estadosAux[j])) 
                     return "*";
-                }
             }
         }
-
         return "";
     }
 
     private void btnExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecutarActionPerformed
-        
-        areaTextoResultado.setText("");
-        int i, j, qtdLinhas = 0;
-        
-        for (i = 0; i < tabela2.getRowCount(); i++) {
-            tabela2.setValueAt(null, i, 0);
-            tabela2.setValueAt(null, i, 1);
-            tabela2.setValueAt(null, i, 2);
-            tabela2.setValueAt(null, i, 3);
-        }
-        
-        for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) {
-            if (!tabela1.getValueAt(i, 0).toString().isEmpty()) {
-                qtdLinhas++;
-            } else {
-                break;
+
+        if (!tabela2.getValueAt(0, 0).toString().isEmpty()) 
+        {
+            int i, j;
+            txtSaida.setText("");
+            qtdLinhasAFD = 0;
+            for (i = 0; (i < tabela2.getRowCount() && tabela2.getValueAt(i, 0) != null); i++) 
+            {
+                if (!tabela2.getValueAt(i, 0).toString().isEmpty())
+                    qtdLinhasAFD++;
+                else 
+                    break;
             }
-        }
-        areaTextoResultado.append("Automato percorrendo a sequencia de entrada, aguarde..." + "\n\n");
-        String estadoSelecionado = txtInicial.getText().toString();
-        areaTextoResultado.append(estadoSelecionado + "->");
-        for (i = 0; i < txtSentenca.getText().length(); i++) {
-            estadoSelecionado = proximoEstado(estadoSelecionado, txtSentenca.getText().substring(i, i + 1), qtdLinhas);
-            if (estadoSelecionado == null){
-                JOptionPane.showMessageDialog(this, "Automato não determinístico");
-                btnConverter.setEnabled(true);
-                btnTestaSentenca.setEnabled(true);
-                break;
+            txtSaida.append("Automato percorrendo a sequência de entrada, aguarde..." + "\n\n");
+
+            String estadoInicial = txtInicial.getText().toString();
+            txtSaida.append("->" + estadoInicial);
+
+            for (i = 0; i < txtSentenca.getText().length(); i++) 
+            {
+                estadoInicial = proximoEstado(estadoInicial, txtSentenca.getText().substring(i, i + 1));
+                if (estadoInicial == null) 
+                    break;
+                txtSaida.append("\n" + estadoInicial);
             }
-            areaTextoResultado.append("\n" + estadoSelecionado);
-        }
-        System.out.println(Arrays.toString(lAlfabeto));
-        if (estadoFinal(estadoSelecionado)) {
-            areaTextoResultado.append("\n\n" + "Entrada aceita!");
-        } else {
-            areaTextoResultado.append("\n\n" + "Entrada rejeitada!");
+
+            if (estadoFinalAFD(estadoInicial)) 
+                txtSaida.append("\n\n" + "Entrada aceita!");
+            else 
+                txtSaida.append("\n\n" + "Entrada rejeitada!");
+        } else 
+        {
+            txtSaida.setText("");
+            int i, j, qtdLinhas = 0;
+
+            for (i = 0; i < tabela2.getRowCount(); i++)
+            {
+                tabela2.setValueAt("", i, 0);
+                tabela2.setValueAt("", i, 1);
+                tabela2.setValueAt("", i, 2);
+                tabela2.setValueAt("", i, 3);
+            }
+
+            String lEstado = "";
+            String lTransicao = "";
+
+            for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) 
+            {
+                if (!tabela1.getValueAt(i, 0).toString().isEmpty()) {
+                    if (lEstado == tabela1.getValueAt(i, 0).toString() && lTransicao == tabela1.getValueAt(i, 1).toString()) 
+                    {
+                        if (JOptionPane.showConfirmDialog(null, "Automato não determinístico, deseja converter?", "Opção", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                        {
+                            Converter();
+                        }
+                        return;
+                    }
+                    lEstado = tabela1.getValueAt(i, 0).toString();
+                    lTransicao = tabela1.getValueAt(i, 1).toString();
+                    qtdLinhas++;
+                } else 
+                {
+                    break;
+                }
+            }
+
+            txtSaida.append("Automato percorrendo a sequencia de entrada, aguarde..." + "\n\n");
+            String estadoSelecionado = txtInicial.getText().toString();
+            txtSaida.append(estadoSelecionado + "->");
+            for (i = 0; i < txtSentenca.getText().length(); i++)
+            {
+                estadoSelecionado = proximoEstado(estadoSelecionado, txtSentenca.getText().substring(i, i + 1), qtdLinhas);
+                if (estadoSelecionado == null) 
+                {
+                    break;
+                }
+                txtSaida.append("\n" + estadoSelecionado);
+            }
+            if (estadoFinal(estadoSelecionado))
+            {
+                txtSaida.append("\n" + "Entrada aceita!");
+            } else 
+            {
+                txtSaida.append("\n" + "Entrada rejeitada!");
+            }
         }
     }//GEN-LAST:event_btnExecutarActionPerformed
 
-    private void btnConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConverterActionPerformed
-        
-        jPanelNovaTabelaDeTransicao.setVisible(true);
-        this.btnTestaSentenca.setVisible(true);
-        areaTextoResultado.append("Convertendo" + "\n\n");
+    private void Converter() 
+    {
+        pnlNovaTabelaDeTransicao.setVisible(true);
+        txtSaida.append("Convertendo" + "\n");
         int i;
         lQtdLinhasAfnd = 0;
         lProximaLinhaAfd = 0;
-        
-        for (i = 0; i < tabela2.getRowCount(); i++) {
+
+        for (i = 0; i < tabela2.getRowCount(); i++)
+        {
             tabela2.setValueAt(null, i, 0);
             tabela2.setValueAt(null, i, 1);
             tabela2.setValueAt(null, i, 2);
             tabela2.setValueAt(null, i, 3);
         }
-        for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) {
-            if (!tabela1.getValueAt(i, 0).toString().isEmpty()) {
+        for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) 
+        {
+            if (!tabela1.getValueAt(i, 0).toString().isEmpty()) 
+            {
                 lQtdLinhasAfnd++;
-            } else {
+            } else 
+            {
                 break;
             }
         }
         ArrayList<String> arrayAlfabetos = new ArrayList<String>();
         DefaultTableModel dtm = (DefaultTableModel) tabela1.getModel();
         int l = 0;
-        while (l < lQtdLinhasAfnd) {
-            if (arrayAlfabetos.contains((String) dtm.getValueAt(l, 1))) {
+        while (l < lQtdLinhasAfnd) 
+        {
+            if (arrayAlfabetos.contains((String) dtm.getValueAt(l, 1))) 
+            {
                 l++;
                 continue;
             }
             arrayAlfabetos.add((String) dtm.getValueAt(l, 1));
             l++;
         }
-        lAlfabeto = arrayAlfabetos.toArray(new String[arrayAlfabetos.size()]);
-        areaTextoResultado.setText("");
-        areaTextoResultado.append("Convertendo" + "\n\n");
-        areaTextoResultado.append("Constr�i estados a partir do estado inicial: " + txtInicial.getText() + "\n");
-
+        alfabeto = arrayAlfabetos.toArray(new String[arrayAlfabetos.size()]);
+        txtSaida.setText("");
+        txtSaida.append("Convertendo" + "\n\n");
+        txtSaida.append("Constroi estados a partir do estado inicial: " + txtInicial.getText() + "\n");
         constroiEstados(txtInicial.getText());
+    }
 
-        areaTextoResultado.append("\nFinal da convers�o para aut�mato finito determin�stico");
-    }//GEN-LAST:event_btnConverterActionPerformed
-
-    private void btnTestaSentencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestaSentencaActionPerformed
-
-        int i, j;
-
-        areaTextoResultado.setText("");
-
-        qtdLinhasAFD = 0;
-        for (i = 0; (i < tabela2.getRowCount() && tabela2.getValueAt(i, 0) != null); i++) {
-            if (!tabela2.getValueAt(i, 0).toString().isEmpty()) {
-                qtdLinhasAFD++;
-            } else {
-                break;
-            }
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        for (int i = 0; i < tabela2.getRowCount(); i++) 
+        {
+            tabela2.setValueAt("", i, 0);
+            tabela2.setValueAt("", i, 1);
+            tabela2.setValueAt("", i, 2);
+            tabela2.setValueAt("", i, 3);
         }
-        areaTextoResultado.append("Aut�mato percorrendo a seq��ncia de entrada, aguarde..." + "\n\n");
-
-        String estadoInicial = txtInicial.getText().toString();
-        areaTextoResultado.append("->" + estadoInicial);
-
-        for (i = 0; i < txtSentenca.getText().length(); i++) {
-            estadoInicial = proximoEstado(estadoInicial, txtSentenca.getText().substring(i, i + 1));
-            if (estadoInicial == null){
-                break;
-            }
-            areaTextoResultado.append("\n" + estadoInicial);
-        }
-
-        if (estadoFinalAFD(estadoInicial)) {
-            areaTextoResultado.append("\n\n" + "Entrada aceita!");
-        } else {
-            areaTextoResultado.append("\n\n" + "Entrada rejeitada!");
-        }
-    }//GEN-LAST:event_btnTestaSentencaActionPerformed
+        txtSaida.setText("");
+        pnlNovaTabelaDeTransicao.setVisible(false);
+    }//GEN-LAST:event_btnLimparActionPerformed
 
     private void txtSentencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSentencaActionPerformed
         // TODO add your handling code here:
@@ -490,30 +507,28 @@ public class Automato extends javax.swing.JFrame {
         String novoEstado = null;
         try {
             for (i = 0; i < qtdLinhas; i++) {
-                if (tabela1.getValueAt(i, 0).toString().equals(estado)
-                        && tabela1.getValueAt(i, 1).toString().equals(transicao)) {
+                if (tabela1.getValueAt(i, 0).toString().equals(estado) && tabela1.getValueAt(i, 1).toString().equals(transicao)) {
                     novoEstado = tabela1.getValueAt(i, 2).toString();
                     break;
                 }
-            }    
-        } catch (NullPointerException e){
+            }
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return novoEstado;
     }
 
-    private String proximoEstado(String p1, String p2) {
+    private String proximoEstado(String estado, String transicao) {
         int i;
         String s = null;
-        try{
+        try {
             for (i = 0; i < qtdLinhasAFD; i++) {
-                if (tabela2.getValueAt(i, 0).toString().equals(p1)
-                        && tabela2.getValueAt(i, 1).toString().equals(p2)) {
+                if (tabela2.getValueAt(i, 0).toString().equals(estado) && tabela2.getValueAt(i, 1).toString().equals(transicao)) {
                     s = tabela2.getValueAt(i, 2).toString();
                     break;
                 }
-            }    
-        } catch (NullPointerException e){
+            }
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return s;
@@ -535,8 +550,7 @@ public class Automato extends javax.swing.JFrame {
         int i;
 
         for (i = 0; i < qtdLinhasAFD; i++) {
-            if (tabela2.getValueAt(i, 2).toString().equals(s)
-                    && tabela2.getValueAt(i, 3).toString().equals("*")) {
+            if (tabela2.getValueAt(i, 2).toString().equals(s) && tabela2.getValueAt(i, 3).toString().equals("*")) {
                 return true;
             }
         }
@@ -553,25 +567,23 @@ public class Automato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaTextoResultado;
-    private javax.swing.JButton btnConverter;
     private javax.swing.JButton btnExecutar;
-    private javax.swing.JButton btnTestaSentenca;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanelNovaTabelaDeTransicao;
-    private javax.swing.JPanel jPanelParametros;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JPanel jPanelSaida;
-    private javax.swing.JPanel jPanelTabelaTransicao;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel labeEstadoInicial;
+    private javax.swing.JLabel labelEstadosFinais;
+    private javax.swing.JLabel labelSentenca;
+    private javax.swing.JPanel painelParametros;
+    private javax.swing.JPanel pnlNovaTabelaDeTransicao;
+    private javax.swing.JPanel pnlTabelaTransicao;
     private javax.swing.JTable tabela1;
     private javax.swing.JTable tabela2;
     private javax.swing.JTextField txtFinal;
     private javax.swing.JTextField txtInicial;
+    private javax.swing.JTextArea txtSaida;
     private javax.swing.JTextField txtSentenca;
     // End of variables declaration//GEN-END:variables
-
 }
