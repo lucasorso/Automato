@@ -3,7 +3,6 @@ package br.com.unesc.linguagensformais.automato;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 public class Automato extends javax.swing.JFrame {
@@ -31,15 +30,15 @@ public class Automato extends javax.swing.JFrame {
         txtFinal = new javax.swing.JTextField();
         jPanelSaida = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtResultado = new javax.swing.JTextArea();
+        areaTextoResultado = new javax.swing.JTextArea();
         jPanelTabelaTransicao = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        gridAutomato = new javax.swing.JTable();
+        tabela1 = new javax.swing.JTable();
         btnExecutar = new javax.swing.JButton();
         btnConverter = new javax.swing.JButton();
         jPanelNovaTabelaDeTransicao = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        gridAFD = new javax.swing.JTable();
+        tabela2 = new javax.swing.JTable();
         btnTestaSentenca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,10 +99,10 @@ public class Automato extends javax.swing.JFrame {
 
         jPanelSaida.setBorder(javax.swing.BorderFactory.createTitledBorder("Saída"));
 
-        txtResultado.setEditable(false);
-        txtResultado.setColumns(40);
-        txtResultado.setRows(10);
-        jScrollPane1.setViewportView(txtResultado);
+        areaTextoResultado.setEditable(false);
+        areaTextoResultado.setColumns(40);
+        areaTextoResultado.setRows(10);
+        jScrollPane1.setViewportView(areaTextoResultado);
 
         javax.swing.GroupLayout jPanelSaidaLayout = new javax.swing.GroupLayout(jPanelSaida);
         jPanelSaida.setLayout(jPanelSaidaLayout);
@@ -122,7 +121,7 @@ public class Automato extends javax.swing.JFrame {
 
         jPanelTabelaTransicao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de Transição"));
 
-        gridAutomato.setModel(new javax.swing.table.DefaultTableModel(
+        tabela1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"q0", "0", "q1"},
                 {"q1", "1", "q1"},
@@ -152,7 +151,7 @@ public class Automato extends javax.swing.JFrame {
                 "Estado", "Transição", "Resultado"
             }
         ));
-        jScrollPane5.setViewportView(gridAutomato);
+        jScrollPane5.setViewportView(tabela1);
 
         javax.swing.GroupLayout jPanelTabelaTransicaoLayout = new javax.swing.GroupLayout(jPanelTabelaTransicao);
         jPanelTabelaTransicao.setLayout(jPanelTabelaTransicaoLayout);
@@ -182,7 +181,7 @@ public class Automato extends javax.swing.JFrame {
 
         jPanelNovaTabelaDeTransicao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de transição Com Novos Estados"));
 
-        gridAFD.setModel(new javax.swing.table.DefaultTableModel(
+        tabela2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"", "", "", null},
                 {"", "", "", null},
@@ -220,7 +219,7 @@ public class Automato extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(gridAFD);
+        jScrollPane4.setViewportView(tabela2);
 
         javax.swing.GroupLayout jPanelNovaTabelaDeTransicaoLayout = new javax.swing.GroupLayout(jPanelNovaTabelaDeTransicao);
         jPanelNovaTabelaDeTransicao.setLayout(jPanelNovaTabelaDeTransicaoLayout);
@@ -297,13 +296,13 @@ public class Automato extends javax.swing.JFrame {
             estados = estado.split(",");
             for (k = 0; k < estados.length; k++) {
                 for (i = 0; i < lQtdLinhasAfnd; i++) {
-                    if (gridAutomato.getValueAt(i, 0).toString().equals(estados[k])
-                            && gridAutomato.getValueAt(i, 1).toString().equals(lAlfabeto[j])) {
-                        if (!contemEstado(novoEstado, gridAutomato.getValueAt(i, 2).toString())) {
+                    if (tabela1.getValueAt(i, 0).toString().equals(estados[k])
+                            && tabela1.getValueAt(i, 1).toString().equals(lAlfabeto[j])) {
+                        if (!contemEstado(novoEstado, tabela1.getValueAt(i, 2).toString())) {
                             if (novoEstado != "") {
                                 novoEstado += ",";
                             }
-                            novoEstado += gridAutomato.getValueAt(i, 2).toString();
+                            novoEstado += tabela1.getValueAt(i, 2).toString();
                         }
                     }
                 }
@@ -313,22 +312,22 @@ public class Automato extends javax.swing.JFrame {
             }
             
             for (i = 0; i <= (lProximaLinhaAfd - 1); i++) {
-                if (gridAFD.getValueAt(i, 0).toString().equals(estado)
-                        && gridAFD.getValueAt(i, 1).toString().equals(lAlfabeto[j])
-                        && gridAFD.getValueAt(i, 2).toString().equals(novoEstado)) {
+                if (tabela2.getValueAt(i, 0).toString().equals(estado)
+                        && tabela2.getValueAt(i, 1).toString().equals(lAlfabeto[j])
+                        && tabela2.getValueAt(i, 2).toString().equals(novoEstado)) {
                     break;
                 }
             }
             if (i > (lProximaLinhaAfd - 1)) {
-                gridAFD.setValueAt(estado, lProximaLinhaAfd, 0);
-                gridAFD.setValueAt(lAlfabeto[j], lProximaLinhaAfd, 1);
-                gridAFD.setValueAt(novoEstado, lProximaLinhaAfd, 2);
+                tabela2.setValueAt(estado, lProximaLinhaAfd, 0);
+                tabela2.setValueAt(lAlfabeto[j], lProximaLinhaAfd, 1);
+                tabela2.setValueAt(novoEstado, lProximaLinhaAfd, 2);
                 estadoFinal = estadoFinalAFND(novoEstado);
-                gridAFD.setValueAt(estadoFinal, lProximaLinhaAfd, 3);
+                tabela2.setValueAt(estadoFinal, lProximaLinhaAfd, 3);
                 lProximaLinhaAfd++;
 
-                txtResultado.append("---Inclui transi��o no AFD: " + estado + "  |  " + lAlfabeto[j] + "  |  " + novoEstado + "  " + estadoFinal + "\n");
-                txtResultado.append("Constr�i estados a partir do novo estado: " + novoEstado + "\n");
+                areaTextoResultado.append("---Inclui transi��o no AFD: " + estado + "  |  " + lAlfabeto[j] + "  |  " + novoEstado + "  " + estadoFinal + "\n");
+                areaTextoResultado.append("Constr�i estados a partir do novo estado: " + novoEstado + "\n");
                 constroiEstados(novoEstado);
             }
         }
@@ -367,41 +366,41 @@ public class Automato extends javax.swing.JFrame {
 
     private void btnExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecutarActionPerformed
         
-        txtResultado.setText("");
+        areaTextoResultado.setText("");
         int i, j, qtdLinhas = 0;
         
-        for (i = 0; i < gridAFD.getRowCount(); i++) {
-            gridAFD.setValueAt(null, i, 0);
-            gridAFD.setValueAt(null, i, 1);
-            gridAFD.setValueAt(null, i, 2);
-            gridAFD.setValueAt(null, i, 3);
+        for (i = 0; i < tabela2.getRowCount(); i++) {
+            tabela2.setValueAt(null, i, 0);
+            tabela2.setValueAt(null, i, 1);
+            tabela2.setValueAt(null, i, 2);
+            tabela2.setValueAt(null, i, 3);
         }
         
-        for (i = 0; (i < gridAutomato.getRowCount() && gridAutomato.getValueAt(i, 0) != null); i++) {
-            if (!gridAutomato.getValueAt(i, 0).toString().isEmpty()) {
+        for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) {
+            if (!tabela1.getValueAt(i, 0).toString().isEmpty()) {
                 qtdLinhas++;
             } else {
                 break;
             }
         }
-        txtResultado.append("Aut�mato percorrendo a seq��ncia de entrada, aguarde..." + "\n\n");
+        areaTextoResultado.append("Automato percorrendo a sequencia de entrada, aguarde..." + "\n\n");
         String estadoSelecionado = txtInicial.getText().toString();
-        txtResultado.append(estadoSelecionado + "->");
+        areaTextoResultado.append(estadoSelecionado + "->");
         for (i = 0; i < txtSentenca.getText().length(); i++) {
             estadoSelecionado = proximoEstado(estadoSelecionado, txtSentenca.getText().substring(i, i + 1), qtdLinhas);
             if (estadoSelecionado == null){
-                JOptionPane.showMessageDialog(this, "Automato N�o determin�stico");
+                JOptionPane.showMessageDialog(this, "Automato não determinístico");
                 btnConverter.setEnabled(true);
                 btnTestaSentenca.setEnabled(true);
                 break;
             }
-            txtResultado.append("\n" + estadoSelecionado);
+            areaTextoResultado.append("\n" + estadoSelecionado);
         }
         System.out.println(Arrays.toString(lAlfabeto));
         if (estadoFinal(estadoSelecionado)) {
-            txtResultado.append("\n\n" + "Entrada aceita!");
+            areaTextoResultado.append("\n\n" + "Entrada aceita!");
         } else {
-            txtResultado.append("\n\n" + "Entrada rejeitada!");
+            areaTextoResultado.append("\n\n" + "Entrada rejeitada!");
         }
     }//GEN-LAST:event_btnExecutarActionPerformed
 
@@ -409,26 +408,26 @@ public class Automato extends javax.swing.JFrame {
         
         jPanelNovaTabelaDeTransicao.setVisible(true);
         this.btnTestaSentenca.setVisible(true);
-        txtResultado.append("Convertendo" + "\n\n");
+        areaTextoResultado.append("Convertendo" + "\n\n");
         int i;
         lQtdLinhasAfnd = 0;
         lProximaLinhaAfd = 0;
         
-        for (i = 0; i < gridAFD.getRowCount(); i++) {
-            gridAFD.setValueAt(null, i, 0);
-            gridAFD.setValueAt(null, i, 1);
-            gridAFD.setValueAt(null, i, 2);
-            gridAFD.setValueAt(null, i, 3);
+        for (i = 0; i < tabela2.getRowCount(); i++) {
+            tabela2.setValueAt(null, i, 0);
+            tabela2.setValueAt(null, i, 1);
+            tabela2.setValueAt(null, i, 2);
+            tabela2.setValueAt(null, i, 3);
         }
-        for (i = 0; (i < gridAutomato.getRowCount() && gridAutomato.getValueAt(i, 0) != null); i++) {
-            if (!gridAutomato.getValueAt(i, 0).toString().isEmpty()) {
+        for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) {
+            if (!tabela1.getValueAt(i, 0).toString().isEmpty()) {
                 lQtdLinhasAfnd++;
             } else {
                 break;
             }
         }
         ArrayList<String> arrayAlfabetos = new ArrayList<String>();
-        DefaultTableModel dtm = (DefaultTableModel) gridAutomato.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) tabela1.getModel();
         int l = 0;
         while (l < lQtdLinhasAfnd) {
             if (arrayAlfabetos.contains((String) dtm.getValueAt(l, 1))) {
@@ -439,47 +438,46 @@ public class Automato extends javax.swing.JFrame {
             l++;
         }
         lAlfabeto = arrayAlfabetos.toArray(new String[arrayAlfabetos.size()]);
-        txtResultado.setText("");
-        txtResultado.append("Convertendo" + "\n\n");
-        txtResultado.append("Constr�i estados a partir do estado inicial: "
-            + txtInicial.getText() + "\n");
+        areaTextoResultado.setText("");
+        areaTextoResultado.append("Convertendo" + "\n\n");
+        areaTextoResultado.append("Constr�i estados a partir do estado inicial: " + txtInicial.getText() + "\n");
 
         constroiEstados(txtInicial.getText());
 
-        txtResultado.append("\nFinal da convers�o para aut�mato finito determin�stico");
+        areaTextoResultado.append("\nFinal da convers�o para aut�mato finito determin�stico");
     }//GEN-LAST:event_btnConverterActionPerformed
 
     private void btnTestaSentencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestaSentencaActionPerformed
 
         int i, j;
 
-        txtResultado.setText("");
+        areaTextoResultado.setText("");
 
         qtdLinhasAFD = 0;
-        for (i = 0; (i < gridAFD.getRowCount() && gridAFD.getValueAt(i, 0) != null); i++) {
-            if (!gridAFD.getValueAt(i, 0).toString().isEmpty()) {
+        for (i = 0; (i < tabela2.getRowCount() && tabela2.getValueAt(i, 0) != null); i++) {
+            if (!tabela2.getValueAt(i, 0).toString().isEmpty()) {
                 qtdLinhasAFD++;
             } else {
                 break;
             }
         }
-        txtResultado.append("Aut�mato percorrendo a seq��ncia de entrada, aguarde..." + "\n\n");
+        areaTextoResultado.append("Aut�mato percorrendo a seq��ncia de entrada, aguarde..." + "\n\n");
 
         String estadoInicial = txtInicial.getText().toString();
-        txtResultado.append("->" + estadoInicial);
+        areaTextoResultado.append("->" + estadoInicial);
 
         for (i = 0; i < txtSentenca.getText().length(); i++) {
             estadoInicial = proximoEstado(estadoInicial, txtSentenca.getText().substring(i, i + 1));
             if (estadoInicial == null){
                 break;
             }
-            txtResultado.append("\n" + estadoInicial);
+            areaTextoResultado.append("\n" + estadoInicial);
         }
 
         if (estadoFinalAFD(estadoInicial)) {
-            txtResultado.append("\n\n" + "Entrada aceita!");
+            areaTextoResultado.append("\n\n" + "Entrada aceita!");
         } else {
-            txtResultado.append("\n\n" + "Entrada rejeitada!");
+            areaTextoResultado.append("\n\n" + "Entrada rejeitada!");
         }
     }//GEN-LAST:event_btnTestaSentencaActionPerformed
 
@@ -492,9 +490,9 @@ public class Automato extends javax.swing.JFrame {
         String novoEstado = null;
         try {
             for (i = 0; i < qtdLinhas; i++) {
-                if (gridAutomato.getValueAt(i, 0).toString().equals(estado)
-                        && gridAutomato.getValueAt(i, 1).toString().equals(transicao)) {
-                    novoEstado = gridAutomato.getValueAt(i, 2).toString();
+                if (tabela1.getValueAt(i, 0).toString().equals(estado)
+                        && tabela1.getValueAt(i, 1).toString().equals(transicao)) {
+                    novoEstado = tabela1.getValueAt(i, 2).toString();
                     break;
                 }
             }    
@@ -509,9 +507,9 @@ public class Automato extends javax.swing.JFrame {
         String s = null;
         try{
             for (i = 0; i < qtdLinhasAFD; i++) {
-                if (gridAFD.getValueAt(i, 0).toString().equals(p1)
-                        && gridAFD.getValueAt(i, 1).toString().equals(p2)) {
-                    s = gridAFD.getValueAt(i, 2).toString();
+                if (tabela2.getValueAt(i, 0).toString().equals(p1)
+                        && tabela2.getValueAt(i, 1).toString().equals(p2)) {
+                    s = tabela2.getValueAt(i, 2).toString();
                     break;
                 }
             }    
@@ -537,8 +535,8 @@ public class Automato extends javax.swing.JFrame {
         int i;
 
         for (i = 0; i < qtdLinhasAFD; i++) {
-            if (gridAFD.getValueAt(i, 2).toString().equals(s)
-                    && gridAFD.getValueAt(i, 3).toString().equals("*")) {
+            if (tabela2.getValueAt(i, 2).toString().equals(s)
+                    && tabela2.getValueAt(i, 3).toString().equals("*")) {
                 return true;
             }
         }
@@ -555,11 +553,10 @@ public class Automato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaTextoResultado;
     private javax.swing.JButton btnConverter;
     private javax.swing.JButton btnExecutar;
     private javax.swing.JButton btnTestaSentenca;
-    private javax.swing.JTable gridAFD;
-    private javax.swing.JTable gridAutomato;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -570,9 +567,10 @@ public class Automato extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable tabela1;
+    private javax.swing.JTable tabela2;
     private javax.swing.JTextField txtFinal;
     private javax.swing.JTextField txtInicial;
-    private javax.swing.JTextArea txtResultado;
     private javax.swing.JTextField txtSentenca;
     // End of variables declaration//GEN-END:variables
 
