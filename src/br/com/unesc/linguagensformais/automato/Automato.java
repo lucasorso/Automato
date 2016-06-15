@@ -48,7 +48,7 @@ public class Automato extends javax.swing.JFrame {
 
         labeEstadoInicial.setText("Estado Inicial");
 
-        txtInicial.setText("q0");
+        txtInicial.setText("A");
 
         txtSentenca.setText("0110");
         txtSentenca.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +61,12 @@ public class Automato extends javax.swing.JFrame {
 
         labelEstadosFinais.setText("Estados Finais");
 
-        txtFinal.setText("q3");
+        txtFinal.setText("C");
+        txtFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFinalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelParametrosLayout = new javax.swing.GroupLayout(painelParametros);
         painelParametros.setLayout(painelParametrosLayout);
@@ -119,11 +124,11 @@ public class Automato extends javax.swing.JFrame {
 
         tabela1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"q0", "0", "q1"},
-                {"q1", "1", "q1"},
-                {"q1", "1", "q2"},
-                {"q2", "0", "q3"},
-                {"", "", ""},
+                {"A", "a", "B"},
+                {"A", "b", "B"},
+                {"B", "a", "C"},
+                {"B", "a", "B"},
+                {"C", "b", "B"},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -284,7 +289,8 @@ public class Automato extends javax.swing.JFrame {
             {
                 for (i = 0; i < lQtdLinhasAfnd; i++) 
                 {
-                    if (tabela1.getValueAt(i, 0).toString().equals(estados[k]) && tabela1.getValueAt(i, 1).toString().equals(alfabeto[j]))
+                    if (tabela1.getValueAt(i, 0).toString().equals(estados[k]) 
+                            && tabela1.getValueAt(i, 1).toString().equals(alfabeto[j]))
                     {
                         if (!contemEstado(novoEstado, tabela1.getValueAt(i, 2).toString())) {
                             if (novoEstado != "") 
@@ -402,7 +408,7 @@ public class Automato extends javax.swing.JFrame {
             for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) 
             {
                 if (!tabela1.getValueAt(i, 0).toString().isEmpty()) {
-                    if (lEstado == tabela1.getValueAt(i, 0).toString() && lTransicao == tabela1.getValueAt(i, 1).toString()) 
+                    if (lEstado.equals(tabela1.getValueAt(i, 0).toString()) && lTransicao.equals(tabela1.getValueAt(i, 1).toString())) 
                     {
                         if (JOptionPane.showConfirmDialog(null, "Automato não determinístico, deseja converter?", "Opção", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                         {
@@ -501,6 +507,10 @@ public class Automato extends javax.swing.JFrame {
     private void txtSentencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSentencaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSentencaActionPerformed
+
+    private void txtFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFinalActionPerformed
 
     private String proximoEstado(String estado, String transicao, int qtdLinhas) {
         int i;

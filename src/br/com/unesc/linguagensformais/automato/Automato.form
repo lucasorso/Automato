@@ -132,7 +132,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtInicial">
           <Properties>
-            <Property name="text" type="java.lang.String" value="q0"/>
+            <Property name="text" type="java.lang.String" value="A"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSentenca">
@@ -155,8 +155,11 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtFinal">
           <Properties>
-            <Property name="text" type="java.lang.String" value="q3"/>
+            <Property name="text" type="java.lang.String" value="C"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFinalActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -234,11 +237,11 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="23">
                     <Column editable="true" title="Estado" type="java.lang.Object">
-                      <Data value="q0"/>
-                      <Data value="q1"/>
-                      <Data value="q1"/>
-                      <Data value="q2"/>
-                      <Data value=""/>
+                      <Data value="A"/>
+                      <Data value="A"/>
+                      <Data value="B"/>
+                      <Data value="B"/>
+                      <Data value="C"/>
                       <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
@@ -259,11 +262,11 @@
                       <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Transi&#xe7;&#xe3;o" type="java.lang.Object">
-                      <Data value="0"/>
-                      <Data value="1"/>
-                      <Data value="1"/>
-                      <Data value="0"/>
-                      <Data value=""/>
+                      <Data value="a"/>
+                      <Data value="b"/>
+                      <Data value="a"/>
+                      <Data value="a"/>
+                      <Data value="b"/>
                       <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
@@ -284,11 +287,11 @@
                       <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Resultado" type="java.lang.Object">
-                      <Data value="q1"/>
-                      <Data value="q1"/>
-                      <Data value="q2"/>
-                      <Data value="q3"/>
-                      <Data value=""/>
+                      <Data value="B"/>
+                      <Data value="B"/>
+                      <Data value="C"/>
+                      <Data value="B"/>
+                      <Data value="B"/>
                       <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
