@@ -1,20 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.unesc.linguagensformais.automato;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @authors Guilherme Daros, Lucas Orso
+ */
 public class Automato extends javax.swing.JFrame {
 
     private String[] alfabeto;
-    private int qtdLinhasTabela;
     private int lProximaLinhaAfd;
     private int lQtdLinhasAfnd;
-    private int qtdLinhasAFD;
+    private int qtdLinhasAfd;
 
-    public Automato() 
-    {
+    public Automato() {
         initComponents();
         pnlNovaTabelaDeTransicao.setVisible(false);
     }
@@ -40,6 +46,7 @@ public class Automato extends javax.swing.JFrame {
         pnlNovaTabelaDeTransicao = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabela2 = new javax.swing.JTable();
+        btnGerarGramatica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Linguagens Formais");
@@ -129,24 +136,24 @@ public class Automato extends javax.swing.JFrame {
                 {"B", "a", "C"},
                 {"B", "a", "B"},
                 {"C", "b", "B"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""},
+                {"", "", ""}
             },
             new String [] {
                 "Estado", "Transição", "Resultado"
@@ -183,37 +190,44 @@ public class Automato extends javax.swing.JFrame {
 
         tabela2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", null},
-                {"", "", "", null},
-                {"", "", "", null},
-                {"", "", "", null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""}
             },
             new String [] {
                 "Estado", "Transição", "Resultado", "Estado Final"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -232,6 +246,13 @@ public class Automato extends javax.swing.JFrame {
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
+        btnGerarGramatica.setText("Gerar Gramática");
+        btnGerarGramatica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarGramaticaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -244,9 +265,10 @@ public class Automato extends javax.swing.JFrame {
                     .addComponent(painelParametros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnExecutar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(32, 32, 32)
                         .addComponent(btnLimpar)
-                        .addGap(113, 113, 113))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnGerarGramatica))
                     .addComponent(jPanelSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlNovaTabelaDeTransicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,7 +288,8 @@ public class Automato extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnExecutar)
-                                    .addComponent(btnLimpar))
+                                    .addComponent(btnLimpar)
+                                    .addComponent(btnGerarGramatica))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanelSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -274,85 +297,79 @@ public class Automato extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void constroiEstados(String estado)
-    {
-        int i, j, k;
-        String novoEstado, estadoFinal;
+    private void constroiEstados(String estado) {
+        int i;
+        int j;
+        int k;
+        String novoEstado;
+        String estadoFinal;
         String estados[];
-        for (j = 0; j < alfabeto.length; j++) 
-        {
+        for (j = 0; j < alfabeto.length; j++) {
             novoEstado = "";
             estados = estado.split(",");
-            for (k = 0; k < estados.length; k++)
-            {
-                for (i = 0; i < lQtdLinhasAfnd; i++) 
-                {
-                    if (tabela1.getValueAt(i, 0).toString().equals(estados[k]) 
-                            && tabela1.getValueAt(i, 1).toString().equals(alfabeto[j]))
-                    {
+            for (k = 0; k < estados.length; k++) {
+                for (i = 0; i < lQtdLinhasAfnd; i++) {
+                    if (tabela1.getValueAt(i, 0).toString().equals(estados[k]) && tabela1.getValueAt(i, 1).toString().equals(alfabeto[j])) {
                         if (!contemEstado(novoEstado, tabela1.getValueAt(i, 2).toString())) {
-                            if (novoEstado != "") 
+                            if (novoEstado != "") {
                                 novoEstado += ",";
-                            
+                            }
                             novoEstado += tabela1.getValueAt(i, 2).toString();
                         }
                     }
                 }
             }
-            if (novoEstado == "") 
+            if (novoEstado == "") {
                 continue;
-
-            for (i = 0; i <= (lProximaLinhaAfd - 1); i++) 
-            {
+            }
+            for (i = 0; i <= (lProximaLinhaAfd - 1); i++) {
                 if (tabela2.getValueAt(i, 0).toString().equals(estado)
                         && tabela2.getValueAt(i, 1).toString().equals(alfabeto[j])
                         && tabela2.getValueAt(i, 2).toString().equals(novoEstado)) {
                     break;
                 }
             }
-            if (i > (lProximaLinhaAfd - 1))
-            {
+            if (i > (lProximaLinhaAfd - 1)) {
                 tabela2.setValueAt(estado, lProximaLinhaAfd, 0);
                 tabela2.setValueAt(alfabeto[j], lProximaLinhaAfd, 1);
                 tabela2.setValueAt(novoEstado, lProximaLinhaAfd, 2);
                 estadoFinal = constroiNovoEstadoFinal(novoEstado);
                 tabela2.setValueAt(estadoFinal, lProximaLinhaAfd, 3);
                 lProximaLinhaAfd++;
-                txtSaida.append("-Transição de estado -> " + estado + " Transição -> " + alfabeto[j] + " Novo Estado -> " + novoEstado + " | " + estadoFinal + "\n");
+                txtSaida.append("-Transição de estado -> " + estado + " Transição -> " + alfabeto[j] + " Novo Estado -> " + novoEstado + " " + estadoFinal + "\n");
                 constroiEstados(novoEstado);
             }
         }
     }
 
-    private boolean contemEstado(String estado1, String estado2) 
-    {
+    private boolean contemEstado(String estado1, String estado2) {
         int i;
         String estados[] = estado1.split(",");
-
-        for (i = 0; i < estados.length; i++) 
-        {
-            if (estados[i].equals(estado2))
+        for (i = 0; i < estados.length; i++) {
+            if (estados[i].equals(estado2)) {
                 break;
+            }
         }
-        if (i < estados.length) 
+        if (i < estados.length) {
             return true;
-        else 
+        } else {
             return false;
+        }
     }
 
-    private String constroiNovoEstadoFinal(String estado)
-    {
-        int i, j;
+    private String constroiNovoEstadoFinal(String estado) {
+        int i;
+        int j;
         String estadosFinais[] = txtFinal.getText().split(",");
         String estadosAux[] = estado.split(",");
-        for (i = 0; i < estadosFinais.length; i++) 
-        {
-            for (j = 0; j < estadosAux.length; j++) 
-            {
-                if (estadosFinais[i].equals(estadosAux[j])) 
+        for (i = 0; i < estadosFinais.length; i++) {
+            for (j = 0; j < estadosAux.length; j++) {
+                if (estadosFinais[i].equals(estadosAux[j])) {
                     return "*";
+                }
             }
         }
         return "";
@@ -360,131 +377,138 @@ public class Automato extends javax.swing.JFrame {
 
     private void btnExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecutarActionPerformed
 
-        if (!tabela2.getValueAt(0, 0).toString().isEmpty()) 
-        {
+        if (!tabela2.getValueAt(0, 0).toString().isEmpty()) {
             int i, j;
             txtSaida.setText("");
-            qtdLinhasAFD = 0;
-            for (i = 0; (i < tabela2.getRowCount() && tabela2.getValueAt(i, 0) != null); i++) 
-            {
-                if (!tabela2.getValueAt(i, 0).toString().isEmpty())
-                    qtdLinhasAFD++;
-                else 
-                    break;
-            }
+            qtdLinhasAfd = ContaLinhasAfd();
             txtSaida.append("Automato percorrendo a sequência de entrada, aguarde..." + "\n\n");
-
             String estadoInicial = txtInicial.getText().toString();
             txtSaida.append("->" + estadoInicial);
-
-            for (i = 0; i < txtSentenca.getText().length(); i++) 
-            {
+            for (i = 0; i < txtSentenca.getText().length(); i++) {
                 estadoInicial = proximoEstado(estadoInicial, txtSentenca.getText().substring(i, i + 1));
-                if (estadoInicial == null) 
+                if (estadoInicial == null) {
                     break;
-                txtSaida.append("\n" + estadoInicial);
+                }
             }
-
-            if (estadoFinalAFD(estadoInicial)) 
+            if (estadoFinalAFD(estadoInicial)) {
                 txtSaida.append("\n\n" + "Entrada aceita!");
-            else 
+            } else {
                 txtSaida.append("\n\n" + "Entrada rejeitada!");
-        } else 
-        {
-            txtSaida.setText("");
-            int i, j, qtdLinhas = 0;
-
-            for (i = 0; i < tabela2.getRowCount(); i++)
-            {
-                tabela2.setValueAt("", i, 0);
-                tabela2.setValueAt("", i, 1);
-                tabela2.setValueAt("", i, 2);
-                tabela2.setValueAt("", i, 3);
             }
-
+        } else {
+            txtSaida.setText("");
+            int i;
+            int j;
+            int qtdLinhas = 0;
             String lEstado = "";
             String lTransicao = "";
-
-            for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) 
-            {
+            for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) {
                 if (!tabela1.getValueAt(i, 0).toString().isEmpty()) {
-                    if (lEstado.equals(tabela1.getValueAt(i, 0).toString()) && lTransicao.equals(tabela1.getValueAt(i, 1).toString())) 
-                    {
-                        if (JOptionPane.showConfirmDialog(null, "Automato não determinístico, deseja converter?", "Opção", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-                        {
-                            Converter();
+                    if (lEstado.equals(tabela1.getValueAt(i, 0).toString()) && lTransicao.equals(tabela1.getValueAt(i, 1).toString())) {
+                        if (JOptionPane.showConfirmDialog(null, "Automato não determinístico, deseja converter?", "Opção", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            IniciaConversao();
                         }
                         return;
                     }
                     lEstado = tabela1.getValueAt(i, 0).toString();
                     lTransicao = tabela1.getValueAt(i, 1).toString();
                     qtdLinhas++;
-                } else 
-                {
+                } else {
                     break;
                 }
             }
 
             txtSaida.append("Automato percorrendo a sequencia de entrada, aguarde..." + "\n\n");
             String estadoSelecionado = txtInicial.getText().toString();
-            txtSaida.append(estadoSelecionado + "->");
-            for (i = 0; i < txtSentenca.getText().length(); i++)
-            {
+            for (i = 0; i < txtSentenca.getText().length(); i++) {
                 estadoSelecionado = proximoEstado(estadoSelecionado, txtSentenca.getText().substring(i, i + 1), qtdLinhas);
-                if (estadoSelecionado == null) 
-                {
+                if (estadoSelecionado == null) {
                     break;
                 }
-                txtSaida.append("\n" + estadoSelecionado);
             }
-            if (estadoFinal(estadoSelecionado))
-            {
+            if (estadoFinal(estadoSelecionado)) {
                 txtSaida.append("\n" + "Entrada aceita!");
-            } else 
-            {
+            } else {
                 txtSaida.append("\n" + "Entrada rejeitada!");
             }
         }
     }//GEN-LAST:event_btnExecutarActionPerformed
 
-    private void Converter() 
-    {
-        pnlNovaTabelaDeTransicao.setVisible(true);
-        txtSaida.append("Convertendo" + "\n");
-        int i;
-        lQtdLinhasAfnd = 0;
-        lProximaLinhaAfd = 0;
-
-        for (i = 0; i < tabela2.getRowCount(); i++)
-        {
-            tabela2.setValueAt(null, i, 0);
-            tabela2.setValueAt(null, i, 1);
-            tabela2.setValueAt(null, i, 2);
-            tabela2.setValueAt(null, i, 3);
-        }
-        for (i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) 
-        {
-            if (!tabela1.getValueAt(i, 0).toString().isEmpty()) 
-            {
-                lQtdLinhasAfnd++;
-            } else 
-            {
-                break;
-            }
-        }
+    private ArrayList<String> PegarAlfabetoTab1() {
         ArrayList<String> arrayAlfabetos = new ArrayList<String>();
         DefaultTableModel dtm = (DefaultTableModel) tabela1.getModel();
         int l = 0;
-        while (l < lQtdLinhasAfnd) 
-        {
-            if (arrayAlfabetos.contains((String) dtm.getValueAt(l, 1))) 
-            {
+        while (l < lQtdLinhasAfnd) {
+            if (arrayAlfabetos.contains((String) dtm.getValueAt(l, 1))) {
                 l++;
                 continue;
             }
             arrayAlfabetos.add((String) dtm.getValueAt(l, 1));
             l++;
         }
+        return arrayAlfabetos;
+    }
+
+    private ArrayList<String> PegarEstadosTab1() {
+        ArrayList<String> arrayEstados = new ArrayList<String>();
+        DefaultTableModel dtm = (DefaultTableModel) tabela1.getModel();
+        int i = 0;
+        while (i < lQtdLinhasAfnd) {
+            if (arrayEstados.contains((String) dtm.getValueAt(i, 0))) {
+                i++;
+                continue;
+            }
+            arrayEstados.add((String) dtm.getValueAt(i, 0));
+            i++;
+        }
+        return arrayEstados;
+    }
+
+    private ArrayList<String> PegarEstadosTab2() {
+        ArrayList<String> arrayEstados = new ArrayList<String>();
+        DefaultTableModel dtm = (DefaultTableModel) tabela2.getModel();
+        int i = 0;
+        while (i < lQtdLinhasAfnd) {
+            if (arrayEstados.contains((String) dtm.getValueAt(i, 0))) {
+                i++;
+                continue;
+            }
+            arrayEstados.add((String) dtm.getValueAt(i, 0));
+            i++;
+        }
+        return arrayEstados;
+    }
+
+    private void ContaLinhasAfnd() {
+        lQtdLinhasAfnd = 0;
+        for (int i = 0; (i < tabela1.getRowCount() && tabela1.getValueAt(i, 0) != null); i++) {
+            if (!tabela1.getValueAt(i, 0).toString().isEmpty()) {
+                lQtdLinhasAfnd++;
+            } else {
+                break;
+            }
+        }
+    }
+
+    private int ContaLinhasAfd() {
+        int linhas = 0;
+
+        for (int i = 0; (i < tabela2.getRowCount() && tabela2.getValueAt(i, 0) != null); i++) {
+            if (!tabela2.getValueAt(i, 0).toString().isEmpty()) {
+                linhas++;
+            } else {
+                break;
+            }
+        }
+        return linhas;
+    }
+
+    private void IniciaConversao() {
+        pnlNovaTabelaDeTransicao.setVisible(true);
+        txtSaida.append("Convertendo" + "\n");
+        int i;
+        ContaLinhasAfnd();
+        ArrayList<String> arrayAlfabetos = PegarAlfabetoTab1();
         alfabeto = arrayAlfabetos.toArray(new String[arrayAlfabetos.size()]);
         txtSaida.setText("");
         txtSaida.append("Convertendo" + "\n\n");
@@ -493,8 +517,7 @@ public class Automato extends javax.swing.JFrame {
     }
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        for (int i = 0; i < tabela2.getRowCount(); i++) 
-        {
+        for (int i = 0; i < tabela2.getRowCount(); i++) {
             tabela2.setValueAt("", i, 0);
             tabela2.setValueAt("", i, 1);
             tabela2.setValueAt("", i, 2);
@@ -505,12 +528,69 @@ public class Automato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void txtSentencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSentencaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtSentencaActionPerformed
 
     private void txtFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFinalActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtFinalActionPerformed
+
+    private void btnGerarGramaticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarGramaticaActionPerformed
+        if (!tabela2.getValueAt(0, 0).toString().isEmpty()) {
+            int lQntdlinhasAfd = ContaLinhasAfd();
+            ArrayList<String> arrayEestados = PegarEstadosTab2();
+            String[] estadosT = arrayEestados.toArray(new String[arrayEestados.size()]);
+            String estadoAtual;
+            String producao;
+            String proxEstadoAux = "";
+            String estadoFinal = "";
+            txtSaida.setText("");
+            txtSaida.append("->");
+            for (int i = 0; i < estadosT.length; i++) {
+                estadoAtual = estadosT[i];
+                txtSaida.append(estadoAtual + " ::= ");
+                for (int j = 0; j < lQntdlinhasAfd; j++) {
+                    producao = tabela2.getValueAt(j, 1).toString() + "" + tabela2.getValueAt(j, 2).toString();
+                    if (estadoAtual.equals(tabela2.getValueAt(j, 0).toString())) {
+                        txtSaida.append(producao + "|");
+                        if (estadoAtual.equals(tabela2.getValueAt(j, 0).toString()) && estadoAtual.equals(tabela2.getValueAt(j, 2).toString())) {
+                            txtSaida.append(" \u00d8");
+                        }
+                    }
+                }
+
+                txtSaida.append("\n");
+            }
+        } else {
+            ContaLinhasAfnd();
+            ArrayList<String> arrayEestados = PegarEstadosTab1();
+            String[] estadosT = arrayEestados.toArray(new String[arrayEestados.size()]);
+            String estadoAtual;
+            String producao;
+            txtSaida.setText("");
+            txtSaida.append("->");
+            for (String estadosT1 : estadosT) {
+                estadoAtual = estadosT1;
+                if (estadoAtual.equals(txtFinal.getText())) {
+                    txtSaida.append(" * " + estadoAtual + " ::= ");
+                } else {
+                    txtSaida.append(estadoAtual + " ::= ");
+                }
+                for (int j = 0; j < lQtdLinhasAfnd; j++) {
+                    producao = tabela1.getValueAt(j, 1).toString() + "" + tabela1.getValueAt(j, 2).toString();
+                    if (estadoAtual.equals(tabela1.getValueAt(j, 0).toString())) {
+                        txtSaida.append(producao);
+                        if (estadoAtual.equals(tabela1.getValueAt(j, 0).toString()) && estadoAtual.equals(tabela1.getValueAt(j, 2).toString())) {
+                            txtSaida.append("| \u00d8");
+                        }
+                        String proxEstadoAux = tabela1.getValueAt(j + 1, 0).toString();
+                        if (estadoAtual.equals(proxEstadoAux) && !proxEstadoAux.isEmpty()) {
+                            txtSaida.append("|");
+                        }
+                    }
+                }
+                txtSaida.append("\n");
+            }
+        }
+    }//GEN-LAST:event_btnGerarGramaticaActionPerformed
 
     private String proximoEstado(String estado, String transicao, int qtdLinhas) {
         int i;
@@ -523,31 +603,28 @@ public class Automato extends javax.swing.JFrame {
                 }
             }
         } catch (NullPointerException e) {
-            e.printStackTrace();
         }
         return novoEstado;
     }
 
     private String proximoEstado(String estado, String transicao) {
         int i;
-        String s = null;
+        String novoEstado = null;
         try {
-            for (i = 0; i < qtdLinhasAFD; i++) {
+            for (i = 0; i < qtdLinhasAfd; i++) {
                 if (tabela2.getValueAt(i, 0).toString().equals(estado) && tabela2.getValueAt(i, 1).toString().equals(transicao)) {
-                    s = tabela2.getValueAt(i, 2).toString();
+                    novoEstado = tabela2.getValueAt(i, 2).toString();
                     break;
                 }
             }
         } catch (NullPointerException e) {
-            e.printStackTrace();
         }
-        return s;
+        return novoEstado;
     }
 
     private boolean estadoFinal(String s) {
         int i;
         String estadosFinais[] = txtFinal.getText().split(",");
-
         for (i = 0; i < estadosFinais.length; i++) {
             if (estadosFinais[i].equals(s)) {
                 return true;
@@ -558,26 +635,23 @@ public class Automato extends javax.swing.JFrame {
 
     private boolean estadoFinalAFD(String s) {
         int i;
-
-        for (i = 0; i < qtdLinhasAFD; i++) {
+        for (i = 0; i < qtdLinhasAfd; i++) {
             if (tabela2.getValueAt(i, 2).toString().equals(s) && tabela2.getValueAt(i, 3).toString().equals("*")) {
                 return true;
             }
         }
-
         return false;
     }
 
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Automato().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Automato().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExecutar;
+    private javax.swing.JButton btnGerarGramatica;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JPanel jPanelSaida;
     private javax.swing.JScrollPane jScrollPane1;
