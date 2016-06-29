@@ -7,6 +7,7 @@ package br.com.unesc.linguagensformais.automato;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -380,6 +381,7 @@ public class Automato extends javax.swing.JFrame {
         if (!tabela2.getValueAt(0, 0).toString().isEmpty()) {
             int i, j;
             txtSaida.setText("");
+            qtdLinhasAfd = 0;
             qtdLinhasAfd = ContaLinhasAfd();
             txtSaida.append("Automato percorrendo a sequência de entrada, aguarde..." + "\n\n");
             String estadoInicial = txtInicial.getText().toString();
@@ -508,6 +510,7 @@ public class Automato extends javax.swing.JFrame {
         txtSaida.append("Convertendo" + "\n");
         int i;
         ContaLinhasAfnd();
+        lProximaLinhaAfd = 0;
         ArrayList<String> arrayAlfabetos = PegarAlfabetoTab1();
         alfabeto = arrayAlfabetos.toArray(new String[arrayAlfabetos.size()]);
         txtSaida.setText("");
@@ -536,8 +539,38 @@ public class Automato extends javax.swing.JFrame {
     private void btnGerarGramaticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarGramaticaActionPerformed
         if (!tabela2.getValueAt(0, 0).toString().isEmpty()) {
             int lQntdlinhasAfd = ContaLinhasAfd();
+            JTable lBkpTabela2 = new JTable(tabela2.getModel());
+            int a = 90;
+            String novoEstado = "";
+            String antigoEstado = "";
+            for (int r = 0; r < lQntdlinhasAfd; r++) 
+            {
+                for (int c = 0; c <= 2; c++)
+                {
+                    if (tabela2.getValueAt(r, c).toString().contains(","))
+                    {
+                        novoEstado = String.valueOf((char) a--);
+                        antigoEstado = tabela2.getValueAt(r, c).toString();
+                        tabela2.setValueAt(novoEstado, r, c);
+                        
+                        for (int r1 = 0; r1 < lQntdlinhasAfd; r1++) 
+                        {
+                            for (int c1 = 0; c1 <= 2; c1++)
+                            {
+                                if (tabela2.getValueAt(r1, c1).toString().equals(antigoEstado))
+                                {
+                                    tabela2.setValueAt(novoEstado, r1, c1);
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            };
+            
             ArrayList<String> arrayEestados = PegarEstadosTab2();
             String[] estadosT = arrayEestados.toArray(new String[arrayEestados.size()]);
+            
             String estadoAtual;
             String producao;
             String proxEstadoAux = "";
@@ -551,14 +584,16 @@ public class Automato extends javax.swing.JFrame {
                     producao = tabela2.getValueAt(j, 1).toString() + "" + tabela2.getValueAt(j, 2).toString();
                     if (estadoAtual.equals(tabela2.getValueAt(j, 0).toString())) {
                         txtSaida.append(producao + "|");
-                        if (estadoAtual.equals(tabela2.getValueAt(j, 0).toString()) && estadoAtual.equals(tabela2.getValueAt(j, 2).toString())) {
-                            txtSaida.append(" \u00d8");
+                        if (tabela2.getValueAt(j, 3).toString().equals("*")) {
+                            txtSaida.append(" \u00d8|");
                         }
                     }
                 }
 
                 txtSaida.append("\n");
             }
+            tabela2 = lBkpTabela2;
+            
         } else {
             ContaLinhasAfnd();
             ArrayList<String> arrayEestados = PegarEstadosTab1();
@@ -567,26 +602,19 @@ public class Automato extends javax.swing.JFrame {
             String producao;
             txtSaida.setText("");
             txtSaida.append("->");
-            for (String estadosT1 : estadosT) {
-                estadoAtual = estadosT1;
-                if (estadoAtual.equals(txtFinal.getText())) {
-                    txtSaida.append(" * " + estadoAtual + " ::= ");
-                } else {
-                    txtSaida.append(estadoAtual + " ::= ");
-                }
+            for (int i = 0; i < estadosT.length; i++) {
+                estadoAtual = estadosT[i];
+                txtSaida.append(estadoAtual + " ::= ");
                 for (int j = 0; j < lQtdLinhasAfnd; j++) {
                     producao = tabela1.getValueAt(j, 1).toString() + "" + tabela1.getValueAt(j, 2).toString();
                     if (estadoAtual.equals(tabela1.getValueAt(j, 0).toString())) {
-                        txtSaida.append(producao);
-                        if (estadoAtual.equals(tabela1.getValueAt(j, 0).toString()) && estadoAtual.equals(tabela1.getValueAt(j, 2).toString())) {
-                            txtSaida.append("| \u00d8");
-                        }
-                        String proxEstadoAux = tabela1.getValueAt(j + 1, 0).toString();
-                        if (estadoAtual.equals(proxEstadoAux) && !proxEstadoAux.isEmpty()) {
-                            txtSaida.append("|");
+                        txtSaida.append(producao + "|");
+                        if (tabela1.getValueAt(j, 0).toString().equals(txtFinal.getText())) {
+                            txtSaida.append(" \u00d8|");
                         }
                     }
                 }
+
                 txtSaida.append("\n");
             }
         }
